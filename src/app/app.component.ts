@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SomeService } from './some.service';
+import { AppworksLocatorService } from './appworks-locator.service';
 import { AWFileSystem } from 'appworks-js';
 
 @Component({
@@ -10,7 +11,8 @@ import { AWFileSystem } from 'appworks-js';
 export class AppComponent {
   title = 'app';
 
-  constructor(private someService: SomeService) {
+  constructor(private someService: SomeService,
+    private awLocator: AppworksLocatorService) {
   }
 
   selectAFileAndDoSomething() {
@@ -22,7 +24,7 @@ export class AppComponent {
       console.log(`we failed to select a file! - ${error}`);
     };
 
-    const fs: AWFileSystem = new AWFileSystem();
+    const fs: AWFileSystem = this.awLocator.getAwFs();
     fs.showDirSelector(options, success, err);
   }
 }
