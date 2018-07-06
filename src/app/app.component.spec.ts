@@ -8,13 +8,10 @@ describe('AppComponent', () => {
 
   // the component we are testing
   let underTest: AppComponent;
-
   // the business type service we want to observe calls to
   let someServiceMock;
-
   // our new service that is responsible for construction
   let awLocator;
-
   // the AppWork plugin
   let awFileSystem;
 
@@ -27,7 +24,7 @@ describe('AppComponent', () => {
 
   it('should call the business logic method', () => {
     underTest.selectAFileAndDoSomething();
-    expect(someServiceMock.someBusinessLogic).toHaveBeenCalled();
+    // TODO assert that someServiceMock.someBusinessLogic method was called
   });
 
   // test helpers
@@ -43,14 +40,9 @@ describe('AppComponent', () => {
   }
 
   function mockAppWorksFs() {
-    // mock the return of the AppWorks plugin from our new component
-    spyOn(awLocator, 'getAwFs').and.returnValue(awFileSystem);
+    // TODO mock the return of the AppWorks plugin from our new component
 
-    // mock out the actual AppWorks call
-    spyOn(awFileSystem, 'showDirSelector').and.callFake(function(options, success, err) {
-      // we simply call success here, this IS the real sucess handler we implemented, we could pass back a file array
-      success();
-    });
+    // TODO mock out the actual AppWorks call
   }
 
 });
